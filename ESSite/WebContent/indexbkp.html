@@ -1,0 +1,766 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-GB" xml:lang="en-GB">
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="description" content="This is the 'Event Showcase' landing page. In this site, the events in various cities are listed"/>
+		<meta name="keywords" content="event activities fun"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<title>Events!</title>
+		<link href="./favicon.ico" rel="shortcut icon" type="image/ico"/>
+		<link type="text/css" rel="stylesheet" href="./style.css"/>
+		<link type="text/css" rel="stylesheet" href="./responsiveslides.css"/>
+		<link type="text/css" rel="stylesheet" href="./popup.css"/>
+		<script src="./jquery-1.11.0.min.js" type="text/javascript"></script>
+		<script src="./responsiveslides.min.js" type="text/javascript"></script>
+		<script src="./eventshowcase.js" type="text/javascript"></script>
+		<!--[if lt IE 9]>
+<script src="./html5shiv.js"></script>
+<![endif]-->
+	</head>
+	<body>
+		<section>
+<!-- Header Wrapper -->
+			<div id="header-wrapper">
+<!-- Header -->
+				<header id="header">
+<!-- Logo -->
+					<a href="index.html">
+						<img src="./logo2.png" class="logo" alt="logo"/>
+					</a>
+				</header>
+<!-- Nav -->
+				<nav>
+					<ul>
+						<li class="menu-active">
+							<a href="index.html">Home</a>
+						</li>
+						<li>
+							<a href="index.html#bristol">Bristol <span class="caret"></span>
+							</a>
+							<div>
+								<ul>
+									<li>
+										<a href="index.html#london">London</a>
+									</li>
+									<li>
+										<a href="index.html#manchester">Manchester</a>
+									</li>
+									<li>
+										<a href="index.html#others">Others</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<a href="#popae" id="addevent">Add New Event</a>
+						</li>
+						<li>
+							<a href="#popmb" id="mybookings">My Bookings</a>
+						</li>
+						<li>
+							<a href="report.html">Report</a>
+						</li>
+						<li>
+							<a href="#popac" id="account">demo_user <span class="caret"></span>
+							</a>
+							<div>
+								<ul>
+									<li>
+										<a href="#popln" id="loginb">Logout</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			
+			<div id="content-wrapper">
+				<section id="mc-holder">
+					<ul class="rslides">
+						<li>
+							<a onclick="learnmore();">
+								<img src="image1.png" alt="event one"/>
+								<p class="caption">Cycling from Bristol to London.</p>
+							</a>
+						</li>
+						<li>
+							<a onclick="learnmore();">
+								<img src="image2.png" alt="event two"/>
+								<p class="caption">Musical night at Harborside.</p>
+							</a>
+						</li>
+						<li>
+							<a onclick="learnmore();">
+								<img src="image3.png" alt="event three"/>
+								<p class="caption">River rafting sponsored by UOB!</p>
+							</a>
+						</li>
+						<li>
+							<a onclick="learnmore();">
+								<img src="image4.png" alt="event four"/>
+								<p class="caption">Swimming competition.</p>
+							</a>
+						</li>
+					</ul>
+					<a class="arrows prev mc-prev" onclick="loadimage();">Previous</a>
+					<a class="arrows next mc-next" onclick="loadimage();">Next</a>
+				</section>
+				<section id="h-video">
+					<header>
+						<section id="welcome">
+							<h1>Welcome to Events!</h1>
+							<p>Explore the <strong>happiness</strong>  around you.. Browse &amp; book events of your interest, experience them. Want to know how easy it is? check this video.</p>
+						</section>
+					</header>
+					<div id="div-video">
+					<!--<img class="vid-poster" src="./poster.png" alt="Video poster" />-->
+						<video width="540" height="300" controls="" poster="./poster.png" preload="metadata">
+							<source src="movie.mp4" type="video/mp4"/>
+							<source src="movie.ogg" type="video/ogg"/>
+						</video>
+					</div>
+				</section>
+			</div>
+
+<!-- Events List Wrapper -->
+			<div id="list-wrapper">
+<!-- events at Bristol -->
+				<section id="bristol" class="city-events show">
+					<header>
+						<h2>Latest Events at <strong>Bristol</strong>!</h2>
+						<select class="sortcity" onchange="changecity(this);" id="citysel">
+							<option value="bristol" selected="selected">Bristol</option>
+							<option value="london">London</option>
+							<option value="manchester">Manchester</option>
+							<option value="others">Others</option>
+						</select>
+						
+						<p class="sortdate">Sort by date: <input type="date" id="bristol-sortdate"/>
+						</p>
+						<button type="button" class="sortdate-btn" onclick="loadmore();">submit</button>
+					</header>
+					<div class="latest-events">
+						<div>
+							
+							<section>
+								<a onclick="learnmore();">
+									<img class="latest-events-img" src="./image1.png" alt="e1"/>
+								</a>
+								<button type="button" class="buttons learn-more" onclick="learnmore();">Learn more!</button>
+								<header>
+									<h3>River rafting</h3>
+								</header>
+								<p>This is an <strong>adventerous</strong>, event, sponsored 
+by <a onclick="learnmore();" class="help-link">UOB</a>
+									<span class="help">University</span>. Book now, first come first serve!</p>
+							</section>
+						
+						</div>
+						<div>
+							
+							<section>
+								<a onclick="learnmore();">
+									<img class="latest-events-img" src="./image2.png" alt="e2"/>
+								</a>
+								<button type="button" class="buttons learn-more" onclick="learnmore();">Learn more!</button>
+								<header>
+									<h3>Musical night</h3>
+								</header>
+								<p>
+									<a onclick="learnmore();" class="help-link">Music</a>
+									<span class="help">Jazz</span>, at harborside with lovely food. Only 50 GBP per head.</p>
+							</section>
+						
+						</div>
+						<div>
+							
+							<section>
+								<a onclick="learnmore();">
+									<img class="latest-events-img" src="./image3.png" alt="e3"/>
+								</a>
+								<button type="button" class="buttons learn-more" onclick="learnmore();">Learn more!</button>
+								<header>
+									<h3>Cycling</h3>
+								</header>
+								<p>Cycling from Bristol to London. Contact ABCDEFG. Free event.</p>
+							</section>
+						
+						</div>
+					</div>
+					<div id="bristol-more-events" class="latest-events hide">
+						<div>
+							
+							<section>
+								<a onclick="learnmore();">
+									<img class="latest-events-img" src="./image4.png" alt="e4"/>
+								</a>
+								<button type="button" class="buttons learn-more" onclick="learnmore();">Learn more!</button>
+								<header>
+									<h3>Swimming competition</h3>
+								</header>
+								<p>Do you <strong>love</strong> swimming? Then this event is for you. Free entry! Win upto 500 GBP!</p>
+							</section>
+						
+						</div>
+						<div>
+							
+							<section>
+								<a onclick="learnmore();">
+									<img class="latest-events-img" src="./image3.png" alt="e5"/>
+								</a>
+								<button type="button" class="buttons learn-more" onclick="learnmore();">Learn more!</button>
+								<header>
+									<h3>Hackathon</h3>
+								</header>
+								<p>
+									<a onclick="learnmore();" class="help-link">Hackers</a>
+									<span class="help">Ethical only</span> are welcome to attend this event.</p>
+							</section>
+						
+						</div>
+						<div>
+							
+							<section>
+								<a onclick="learnmore();">
+									<img class="latest-events-img" src="./image2.png" alt="e6"/>
+								</a>
+								<button type="button" class="buttons learn-more" onclick="learnmore();">Learn more!</button>
+								<header>
+									<h3>Food festival</h3>
+								</header>
+								<p>At one of the restaurents. Enjoy multi-cusine and continental.</p>
+							</section>
+						
+						</div>
+					</div>
+				</section>
+
+<!-- events at London -->
+				<section id="london" class="city-events hide">
+					<header>
+						<h2>Latest Events at <strong>London</strong>!</h2>
+						<select class="sortcity" onchange="changecity(this);">
+							<option value="bristol">Bristol</option>
+							<option value="london" selected="selected">London</option>
+							<option value="manchester">Manchester</option>
+							<option value="others">Others</option>
+						</select>
+						<p class="sortdate">Sort by date: <input type="date" id="london-sortdate"/>
+						</p>
+						<button type="button" class="sortdate-btn" onclick="loadmore();">submit</button>
+					</header>
+					<div class="latest-events">
+						<div>
+							
+							<section>
+								<a onclick="learnmore();">
+									<img class="latest-events-img" src="./image1.png" alt="e7"/>
+								</a>
+								<button type="button" class="buttons learn-more" onclick="learnmore();">Learn more!</button>
+								<header>
+									<h3>Water sports</h3>
+								</header>
+								<p>This is an<strong>adventerous</strong>, event, sponsored 
+by <a onclick="learnmore();" class="help-link">UOL</a>
+									<span class="help">University</span>. Book now, first come first serve!</p>
+							</section>
+						
+						</div>
+						<div>
+							
+							<section>
+								<a onclick="learnmore();">
+									<img class="latest-events-img" src="./image2.png" alt="e8"/>
+								</a>
+								<button type="button" class="buttons learn-more" onclick="learnmore();">Learn more!</button>
+								<header>
+									<h3>Salsa Music</h3>
+								</header>
+								<p>
+									<a onclick="learnmore();" class="help-link">Music</a>
+									<span class="help">Guitar</span>, at Spanish restaurent with lovely food. Only 50 GBP per head.</p>
+							</section>
+						
+						</div>
+						<div>
+							
+							<section>
+								<a onclick="learnmore();">
+									<img class="latest-events-img" src="./image3.png" alt="e9"/>
+								</a>
+								<button type="button" class="buttons learn-more" onclick="learnmore();">Learn more!</button>
+								<header>
+									<h3>Canoeing</h3>
+								</header>
+								<p>Canoeing from London to Bristol. Contact ABCDEFG. Free event.</p>
+							</section>
+						
+						</div>
+					</div>
+					<div id="london-more-events" class="latest-events hide">
+						<div>
+							
+							<section>
+								<a onclick="learnmore();">
+									<img class="latest-events-img" src="./image4.png" alt="e10"/>
+								</a>
+								<button type="button" class="buttons learn-more" onclick="learnmore();">Learn more!</button>
+								<header>
+									<h3>Marathon</h3>
+								</header>
+								<p>Do you <strong>love</strong> running for a cause? Then this event is for you. Free entry! Win upto 500 GBP!</p>
+							</section>
+						
+						</div>
+						<div>
+							
+							<section>
+								<a onclick="learnmore();">
+									<img class="latest-events-img" src="./image3.png" alt="e11"/>
+								</a>
+								<button type="button" class="buttons learn-more" onclick="learnmore();">Learn more!</button>
+								<header>
+									<h3>London App-athon!</h3>
+								</header>
+								<p>
+									<a onclick="learnmore();" class="help-link">Hackers</a>
+									<span class="help">Ethical only</span> are welcome to attend this event.</p>
+							</section>
+						
+						</div>
+						<div>
+							
+							<section>
+								<a onclick="learnmore();">
+									<img class="latest-events-img" src="./image2.png" alt="e12"/>
+								</a>
+								<button type="button" class="buttons learn-more" onclick="learnmore();">Learn more!</button>
+								<header>
+									<h3>Food festival</h3>
+								</header>
+								<p>At one of the restaurents. Enjoy multi-cusine and continental.</p>
+							</section>
+						
+						</div>
+					</div>
+				</section>
+<!-- events at Manchester -->
+				<section id="manchester" class="city-events hide">
+					<header>
+						<h2>Latest Events at <strong>Manchester</strong>!</h2>
+						<select class="sortcity" onchange="changecity(this);">
+							<option value="bristol">Bristol</option>
+							<option value="london">London</option>
+							<option value="manchester" selected="selected">Manchester</option>
+							<option value="others">Others</option>
+						</select>
+						<p class="sortdate">Sort by date: <input type="date" id="manchester-sortdate"/>
+						</p>
+						<button type="button" class="sortdate-btn" onclick="loadmore();">submit</button>
+					</header>
+					<div class="latest-events">
+						<div>
+							
+							<section>
+								<a onclick="learnmore();">
+									<img class="latest-events-img" src="./image1.png" alt="e13"/>
+								</a>
+								<button type="button" class="buttons learn-more" onclick="learnmore();">Learn more!</button>
+								<header>
+									<h3>Paint ball</h3>
+								</header>
+								<p>This is an<strong>fun</strong>, event, sponsored 
+by <a onclick="learnmore();" class="help-link">MAN-U</a>
+									<span class="help">Football club</span>. Book now, first come first serve!</p>
+							</section>
+						
+						</div>
+						<div>
+							
+							<section>
+								<a onclick="learnmore();">
+									<img class="latest-events-img" src="./image2.png" alt="e14"/>
+								</a>
+								<button type="button" class="buttons learn-more" onclick="learnmore();">Learn more!</button>
+								<header>
+									<h3>Music &amp; Football</h3>
+								</header>
+								<p>
+									<a onclick="learnmore();">Music &amp; Football</a>, at stadium with lovely food. Only 50 GBP per head.</p>
+							</section>
+						
+						</div>
+						<div>
+							
+							<section>
+								<a onclick="learnmore();">
+									<img class="latest-events-img" src="./image3.png" alt="e15"/>
+								</a>
+								<button type="button" class="buttons learn-more" onclick="learnmore();">Learn more!</button>
+								<header>
+									<h3>Cycling</h3>
+								</header>
+								<p>Cycling from Manchester to London. Contact ABCDEFG. Free event.</p>
+							</section>
+						
+						</div>
+					</div>
+					<div id="manchester-more-events" class="latest-events hide">
+						<div>
+							
+							<section>
+								<a onclick="learnmore();">
+									<img class="latest-events-img" src="./image4.png" alt="e16"/>
+								</a>
+								<button type="button" class="buttons learn-more" onclick="learnmore();">Learn more!</button>
+								<header>
+									<h3>Swimming competition</h3>
+								</header>
+								<p>Do you <strong>love</strong> swimming? Then this event is for you. Free entry! Win upto 500 GBP!</p>
+							</section>
+						
+						</div>
+						<div>
+							
+							<section>
+								<a onclick="learnmore();">
+									<img class="latest-events-img" src="./image3.png" alt="e17"/>
+								</a>
+								<button type="button" class="buttons learn-more" onclick="learnmore();">Learn more!</button>
+								<header>
+									<h3>Hackathon</h3>
+								</header>
+								<p>
+									<a onclick="learnmore();" class="help-link">Hackers</a>
+									<span class="help">Ethical only</span> are welcome to attend this event.</p>
+							</section>
+						
+						</div>
+						<div>
+							
+							<section>
+								<a onclick="learnmore();">
+									<img class="latest-events-img" src="./image2.png" alt="e18"/>
+								</a>
+								<button type="button" class="buttons learn-more" onclick="learnmore();">Learn more!</button>
+								<header>
+									<h3>Food festival</h3>
+								</header>
+								<p>At one of the restaurents. Enjoy multi-cusine and continental.</p>
+							</section>
+						
+						</div>
+					</div>
+				</section>
+<!-- events at Other cities -->
+				<section id="others" class="city-events hide">
+					<header>
+						<h2>Latest Events at <strong>Birmingham, Glasgow and other cities</strong>!</h2>
+						<select class="sortcity" onchange="changecity(this);">
+							<option value="bristol">Bristol</option>
+							<option value="london">London</option>
+							<option value="manchester">Manchester</option>
+							<option value="others" selected="selected">Others</option>
+						</select>
+						<p class="sortdate">Sort by date: <input type="date" id="others-sortdate"/>
+						</p>
+						<button type="button" class="sortdate-btn" onclick="loadmore();">submit</button>
+					</header>
+					<div class="latest-events">
+						<div>
+							
+							<section>
+								<a onclick="learnmore();">
+									<img class="latest-events-img" src="./image1.png" alt="e19"/>
+								</a>
+								<button type="button" class="buttons learn-more" onclick="learnmore();">Learn more!</button>
+								<header>
+									<h3>River rafting</h3>
+								</header>
+								<p>This is an<strong>adventerous</strong>, event, sponsored 
+by <a onclick="learnmore();" class="help-link">UOG</a>
+									<span class="help">University</span>. Book now, first come first serve!</p>
+							</section>
+						
+						</div>
+						<div>
+							
+							<section>
+								<a onclick="learnmore();">
+									<img class="latest-events-img" src="./image2.png" alt="e20"/>
+								</a>
+								<button type="button" class="buttons learn-more" onclick="learnmore();">Learn more!</button>
+								<header>
+									<h3>Birmingham night</h3>
+								</header>
+								<p>
+									<a onclick="learnmore();">Music</a>, at harborside with lovely food. Only 50 GBP per head.</p>
+							</section>
+						
+						</div>
+						<div>
+							
+							<section>
+								<a onclick="learnmore();">
+									<img class="latest-events-img" src="./image3.png" alt="e21"/>
+								</a>
+								<button type="button" class="buttons learn-more" onclick="learnmore();">Learn more!</button>
+								<header>
+									<h3>Cycling</h3>
+								</header>
+								<p>Cycling from York to London. Contact ABCDEFG. Free event.</p>
+							</section>
+						
+						</div>
+					</div>
+					<div id="others-more-events" class="latest-events hide">
+						<div>
+							
+							<section>
+								<a onclick="learnmore();">
+									<img class="latest-events-img" src="./image4.png" alt="e22"/>
+								</a>
+								<button type="button" class="buttons learn-more" onclick="learnmore();">Learn more!</button>
+								<header>
+									<h3>Swimming competition</h3>
+								</header>
+								<p>Do you <strong>love</strong> swimming? Then this event is for you. Free entry! Win upto 500 GBP!</p>
+							</section>
+						
+						</div>
+						<div>
+							
+							<section>
+								<a onclick="learnmore();">
+									<img class="latest-events-img" src="./image3.png" alt="e23"/>
+								</a>
+								<button type="button" class="buttons learn-more" onclick="learnmore();">Learn more!</button>
+								<header>
+									<h3>Hackathon</h3>
+								</header>
+								<p>
+									<a onclick="learnmore();" class="help-link">Hackers</a>
+									<span class="help">Ethical only</span> are welcome to attend this event.</p>
+							</section>
+						
+						</div>
+						<div>
+							
+							<section>
+								<a onclick="learnmore();">
+									<img class="latest-events-img" src="./image2.png" alt="e24"/>
+								</a>
+								<button type="button" class="buttons learn-more" onclick="learnmore();">Learn more!</button>
+								<header>
+									<h3>Food festival</h3>
+								</header>
+								<p>At one of the restaurents. Enjoy multi-cusine and continental.</p>
+							</section>
+						
+						</div>
+					</div>
+				</section>
+				<button type="button" id="event-button" class="buttons" onclick="loadmore();">Load more!</button>
+			</div>
+			<div class="svg-holder" id="svg2">
+				<span id="hovercar">Hover my car!</span>
+				<img src="./car2.png" border="0" class="mycar" />
+			</div>
+		
+			<aside id="modal">
+				<header>
+					<h2>Event Details!</h2>
+				</header>
+				<section>
+					<article>
+						<strong>Cycling from Bristol to London</strong> @starts from <strong>UOB, Bristol</strong> on <strong>09/Mar/2014 07:00 AM</strong>
+					</article>
+					<article>
+This event is organised by <strong>University of Bristol!</strong>
+						<p></p>
+						<p id="p-evt-desc">Cycling is widely regarded as a very effective and efficient mode of transportation optimal for short to moderate distances. Bicycles provide numerous benefits by comparison with motor vehicles, including the sustained physical exercise necessarily involved in cycling, that cycling involves a reduced consumption of fossil fuels, less air or noise pollution, much reduced traffic congestion, easier parking, greater maneuverability, and access to both roads and paths. The advantages also include reduced financial cost to the user as well as to society at large (negligible damage to roads, less road area required).(Source: <a href="http://en.wikipedia.org/wiki/Cycling" target="_blank">wikipedia.org</a>)</p>
+						<p></p>
+					</article>
+					<article>
+						<strong>Price:</strong> Free
+</article>
+					<article>
+#participants: 24
+</article>
+				</section>
+				<section id="reviews">
+					<strong>Reviews:</strong>
+					<article>
+						<em>"This is a good event. My friends like to attend it as well!"</em> - user 1
+</article>
+					<article>
+						<em>"I was looking forward to such an event."</em> - user 2
+</article>
+					<article>
+						<em>"Love this."</em> - user 3
+</article>
+					<article class="comment">
+						<input type="textarea" value="You can post your review.."/>
+					</article>
+				</section>
+				<button type="button" id="event-button" class="buttons" onclick="postcomment();">Comment</button>
+				<button type="button" id="event-button" class="buttons" onclick="bookevent();">Book</button>
+				<button type="button" id="event-button" class="buttons" onclick="closemodal();">Close</button>
+			</aside>
+<!-- user actions, initially planed to design as pop ups, but due to transition issues doing it as part of the page -->
+<!-- popup form login -->
+			<form id="form-1ogin" autocomplete="on" method="post" action="./index.html?test=true">
+				<a href="#" class="overlay" id="popln"></a>
+				<div class="popup">
+					<h2>Welcome Guest!</h2>
+					<p>Please enter your login and password here</p>
+					<div>
+						<label for="email">email</label>
+						<input type="text" id="email" value="" autocomplete="off" required="required"/>
+					</div>
+					<div>
+						<label for="password">Password</label>
+						<input type="password" id="password" value="" required="required"/>
+					</div>
+					<input type="submit" class="buttons" value="Log In" onclick="validateForm();"/>
+				
+					<a class="close" href="#popcl"></a>
+				</div>
+			</form>
+<!-- popup form add new event - method get for initial client version-->
+			<form id="form-addevent" enctype="multipart/form-data" method="post" action="./index.html?test=true" autocomplete="on">
+				<a href="#x" class="overlay" id="popae"></a>
+				<div class="popup">
+					<h2 id="popaeh2">Add New Event</h2>
+					<p>Please enter the event details here:</p>
+					<div>
+						<label for="etitle">Title</label>
+						<input type="text" id="etitle" value="" required="required"/>
+					</div>
+					<div>
+						<label for="eloc">Location</label>
+						<input type="text" id="eloc" value="" required="required"/>
+					</div>
+					<div>
+						<label for="edesc">Description</label>
+						<input type="text" id="edesc" value="" required="required"/>
+					</div>
+					<div>
+						<label for="fileToUpload">Select a File to Upload</label>
+						<input type="file" name="fileToUpload" id="fileToUpload" onchange="fileSelected();" required="required"/>
+					</div>
+					<div>
+						<label for="edate">Date</label>
+						<input type="date" id="edate" value="" required="required"/>
+					</div>
+					<div>
+						<label for="eprice">Price</label>
+						<input type="text" id="eprice" value="" required="required"/>
+					</div>
+					<input type="submit" value="Create" class="buttons"/>
+				
+					<a class="close" href="#popcl"></a>
+				</div>
+			</form>
+
+<!-- view my bookings data -->
+			<a href="#" class="overlay" id="popmb"></a>
+			<div class="popup" id="mytable">
+				<table>
+					<caption>Please find below your booking details.</caption>
+					<colgroup span="3" title="Your bookings!"></colgroup>
+					<thead>
+						<tr>
+							<th scope="col">Event Name</th>
+							<th scope="col">Event Date</th>
+							<th scope="col">Booking Date</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<td>River rafting</td>
+							<td>09/Mar/2014</td>
+							<td>04/Mar/2014</td>
+						</tr>
+					</tfoot>
+					<tbody>
+						<tr>
+							<td>Musical night</td>
+							<td>12/Feb/2014</td>
+							<td>06/Feb/2014</td>
+						</tr>
+						<tr>
+							<td>Cycling</td>
+							<td>16/Feb/2014</td>
+							<td>04/Feb/2014</td>
+						</tr>
+					</tbody>
+				</table>
+				<a class="close" href="#popcl"></a>
+			</div>
+
+<!-- user account details -->
+			<a href="#" class="overlay" id="popac"></a>
+			<div class="popup" id="usracc">
+				<h2>Your account details!</h2>
+				<a href="#">
+					<img class="useracc-img" src="./image1.png" alt=""/>
+				</a>
+				<div>
+					<label>Name:<strong>Demo User</strong>
+					</label>
+				</div>
+				<div>
+					<label>Date Joined:<strong>02/Jan/2014</strong>
+					</label>
+				</div>
+				<div>
+					<label>email:<strong>demouser@bristol.ac.uk</strong>
+					</label>
+				</div>
+				<div>
+					<label>contact:<strong>+44 12345 54321</strong>
+					</label>
+				</div>
+				<div>
+					<label>Post code:<strong>BS5 9JA</strong>
+					</label>
+				</div>
+			
+				<a class="close" href="#popcl"></a>
+			</div>
+
+<!-- Footer Wrapper -->
+			<div id="footer-wrapper">
+<!-- footer -->
+				<footer>
+
+<!-- Nav -->
+				
+					<nav>
+						<ul>
+							<li>
+								<a onclick="construction();" id="about">About</a>
+							</li>
+							<li>
+								<a onclick="construction();">Feedback</a>
+							</li>
+							<li>
+								<a onclick="construction();">FAQs</a>
+							</li>
+							<li>
+								<a onclick="construction();">Terms &amp; Conditions</a>
+							</li>
+							<li>
+								<a onclick="construction();">sitemap</a>
+							</li>
+						</ul>
+					</nav>
+					<p class="copyright">hh13577, University of Bristol | Website created as part of COMSM0104 assignment#1.</p>
+				</footer>
+			</div>
+		</section>
+	</body>
+</html>

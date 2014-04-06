@@ -1,0 +1,194 @@
+.overlay {
+	cursor: default;
+	display: none;
+}
+
+.overlay:target {
+	display: inline-block;
+}
+
+.popup {
+	color: grey;
+	padding: 15pt;
+	text-align: justify;
+	margin-left: 10%;
+	z-index: 10;
+	border-radius: 10pt;
+	background-color: white;
+	display: none;
+	width: 75%;
+	margin-right: 10%;
+}
+
+.overlay:target+.popup {
+	display: inline-block;
+}
+
+.close {
+	height: 30pt;
+	line-height: 30pt;
+	text-align: center;
+	text-decoration: none;
+	top: -15pt;
+	width: 30pt;
+	border-radius: 15pt;
+}
+
+.close:before {
+	color: grey;
+	content: "X";
+	text-shadow: 0 -1pt rgba(0, 0, 0, 0.9);
+	float: right;
+}
+
+.popup p,.popup div {
+	margin-bottom: 10pt;
+}
+
+.popup label {
+	display: inline-block;
+	text-align: left;
+	width: 180pt;
+}
+
+.popup input[type="text"],.popup input[type="date"],.popup input[type="password"]
+	{
+	margin: 0;
+	padding: 4pt;
+	background: lightblue;
+	border: 1pt solid grey;
+	border-radius: 3pt;
+}
+
+.popup input[type="text"]:hover,.popup input[type="date"]:hover,.popup input[type="password"]:hover
+	{
+	background: white;
+}
+
+.popup h2 {
+	font-weight: lighter;
+	line-height: 17.5pt
+}
+
+#mytable {
+	width: 55%;
+}
+
+table {
+	border-collapse: collapse;
+	font-family: Futura, Arial, sans-serif;
+	width: 100%;
+}
+
+caption {
+	font-size: larger;
+	margin: 10pt auto;
+}
+
+th,td {
+	padding: 6.5pt;
+}
+
+th,thead {
+	background: black;
+	color: white;
+	border: 1pt solid black;
+}
+
+td {
+	border: 1pt solid #777;
+}
+
+#usracc {
+	width: 40%;
+}
+
+#usracc label {
+	width: 100%;
+}
+
+#usracc strong {
+	float: right;
+}
+
+#fileToUpload {
+	cursor: pointer;
+	padding: 1% 0% 1% 1%;
+	border: none;
+	background-color: lightblue;
+	border-radius: 10%;
+	color: grey;
+	width: 36%;
+}
+
+/* help links */
+.help {
+	background-color: lightblue;
+	border-radius: 10pt;
+	display: none;
+	padding: 5pt;
+	z-index: 100;
+}
+
+.help-link {
+	color: purple;
+	cursor: pointer;
+}
+
+.help-link:hover+span {
+	display: inline;
+}
+
+/* show event data as modal window */
+#modal {
+	background: white;
+	left: 50%;
+	margin: -250pt 0 0 -40%;
+	position: absolute;
+	top: -1000%;
+	width: 80%;
+	border-radius: 5pt;
+	box-shadow: 0 3pt 7pt rgba(0, 0, 0, .25);
+	-moz-box-shadow: 0 3pt 7pt rgba(0, 0, 0, .25);
+	-webkit-box-shadow: 0 3pt 7pt rgba(0, 0, 0, .25);
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	word-break: break-all;
+}
+/* Make the modal appear when targeted */
+#modal:target {
+	top: 60%;
+	transition: all 0.4s ease-in-out;
+	-moz-transition: all 0.4s ease-in-out;
+	-webkit-transition: all 0.4s ease-in-out;
+	z-index: 100;
+	word-break: break-all;
+}
+
+#modal header {
+	background: grey;
+	border-bottom: 1pt solid grey;
+	border-radius: 5pt 5pt 0 0;
+	-moz-border-radius: 5pt 5pt 0 0;
+	-webkit-border-radius: 5pt 5pt 0 0;
+	word-break: break-all;
+}
+
+#modal section,#modal header {
+	padding: 15pt;
+	z-index: 200;
+	word-break: break-all;
+}
+
+#modal h2 {
+	margin: 0;
+	color: white;
+	word-break: break-all;
+}
+
+.comment input {
+	width: 75%;
+	height: 50pt;
+	padding-left: 5pt;
+}

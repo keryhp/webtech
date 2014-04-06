@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+  version="3.0"
+  metadata-complete="true">
+
+  <display-name>Welcome to EventShowcase</display-name>
+  <description>
+     Welcome to EventShowcase!
+  </description>
+
+	<resource-ref>
+	   <description>DB Connection</description>
+	   <res-ref-name>jdbc/essdb</res-ref-name>
+	   <res-type>javax.sql.DataSource</res-type>
+	   <res-auth>Container</res-auth>
+	</resource-ref>
+	
+  <servlet>
+    <servlet-name>People</servlet-name>
+    <servlet-class>uk.bris.esserver.servlet.PeopleServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>People</servlet-name>
+    <url-pattern>/test</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>City</servlet-name>
+    <servlet-class>uk.bris.esserver.servlet.CityServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>City</servlet-name>
+    <url-pattern>/city</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Photo</servlet-name>
+    <servlet-class>uk.bris.esserver.servlet.PhotoServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Photo</servlet-name>
+    <url-pattern>/photo</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Event</servlet-name>
+    <servlet-class>uk.bris.esserver.servlet.EventServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Event</servlet-name>
+    <url-pattern>/event</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>EditEvent</servlet-name>
+    <servlet-class>uk.bris.esserver.servlet.EditEventServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>EditEvent</servlet-name>
+    <url-pattern>/editevent</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>Comment</servlet-name>
+    <servlet-class>uk.bris.esserver.servlet.CommentServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Comment</servlet-name>
+    <url-pattern>/comment</url-pattern>
+  </servlet-mapping>
+  
+  <filter>
+    <filter-name>content</filter-name>
+    <filter-class>filters.ContentFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>content</filter-name>
+    <url-pattern>*.html</url-pattern>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>content</filter-name>
+    <url-pattern>*.jsp</url-pattern>
+  </filter-mapping>
+</web-app>
