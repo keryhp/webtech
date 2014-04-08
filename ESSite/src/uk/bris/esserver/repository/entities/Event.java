@@ -1,6 +1,7 @@
 package uk.bris.esserver.repository.entities;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -124,7 +125,7 @@ public class Event {
 		eventData.put(EntityNames.DESCRIPTION, this.description);
 		eventData.put(EntityNames.LOCATION, this.location);
 		eventData.put(EntityNames.TAGLINE, this.tagline);
-		eventData.put(EntityNames.STARTDATE, ESSDateUtil.formatDate(this.startDate));
+		eventData.put(EntityNames.STARTDATE, ESSDateUtil.formatter.format(new Date(this.startDate.getTime())));
 		eventData.put(EntityNames.PRICE, this.price);
 		eventData.put(EntityNames.USERID, new Integer(this.userid).toString());
 		eventData.put(EntityNames.IMAGEID, new Integer(this.imageid).toString());

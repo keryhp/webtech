@@ -1,6 +1,12 @@
 package uk.bris.esserver.repository.entities;
 
 import java.sql.Timestamp;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import uk.bris.esserver.repository.constants.EntityNames;
+import uk.bris.esserver.util.ESSDateUtil;
 
 public class Users {
 
@@ -12,6 +18,8 @@ public class Users {
 	private String contact;	
 	private String role;
 	private String postCode;	
+	private String salt;
+	private String password;		
 	private int imageid;	
 	private Timestamp createDate;
 	private int createdBy;
@@ -103,4 +111,36 @@ public class Users {
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
+	
+	public String getSalt() {
+		return salt;
+	}
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	public Map<String, Object> getUserAsMap(){
+		Map<String, Object> usrData = new HashMap<String, Object>();
+		usrData.put(EntityNames.ID, new Integer(this.id).toString());
+		usrData.put(EntityNames.FIRSTNAME, this.firstName);
+		usrData.put(EntityNames.LASTNAME, this.lastName);
+		usrData.put(EntityNames.CITY, this.city);		
+		usrData.put(EntityNames.EMAIL, this.email);
+		usrData.put(EntityNames.CONTACT, this.contact);
+		usrData.put(EntityNames.POSTCODE, this.postCode);		
+		usrData.put(EntityNames.IMAGEID, new Integer(this.imageid).toString());
+		usrData.put(EntityNames.CREATEDATE, ESSDateUtil.formatTimeStamp(this.createDate));
+		usrData.put(EntityNames.CREATEDBY, new Integer(this.createdBy).toString());
+		usrData.put(EntityNames.CREATEDATE, ESSDateUtil.formatTimeStamp(this.lastModified));
+		usrData.put(EntityNames.CREATEDBY, new Integer(this.modifiedBy).toString());		
+		usrData.put(EntityNames.REMARKS, this.remarks);
+		return usrData;
+	}
+
 }

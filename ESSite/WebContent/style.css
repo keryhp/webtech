@@ -34,7 +34,7 @@ html,body {
 #content-wrapper {
 	width: 100%;
 	background-color: white;
-	border-radius: 5%;
+	border-radius: 1%;
 	position: relative;
 	overflow: hidden;
 }
@@ -402,4 +402,8 @@ nav>ul>li:last-child {
 .eventtextarea {
 	width: 600px;
 	height: 75px;
+}
+
+.fromdateI, .todateI{
+	
 }

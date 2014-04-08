@@ -30,10 +30,19 @@ public class EntityNames {
 	public static final String TAGLINE = "tagline";	
 	public static final String LOCATION = "location";
 	public static final String STARTDATE = "startDate";
+	public static final String ENDDATE = "endDate";
 	public static final String PRICE = "price";	
 	public static final String USERID = "userid";
 	public static final String EVENTID = "eventid";
 	public static final String REVIEW = "review";	
 	public static final String PARTICIPANTS = "participants";
 	public static final String COMMENTS = "comments";
+	public static final String EVENTS = "events";
+	public static final String PASSWORD = "password";
+	public static final String LEMAIL = "lemail";
+	public static final String LPASS = "pass";
+	public static final String REMAIL = "remail";
+	public static final String RPASS = "rpass";
+	public static final String SALT = "salt";
+
 }

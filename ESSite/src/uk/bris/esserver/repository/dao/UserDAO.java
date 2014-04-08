@@ -29,12 +29,14 @@ public class UserDAO implements EntityDAO<Users>{
 				EntityNames.CITY + ESSQueries.COMMA + EntityNames.EMAIL + ESSQueries.COMMA +
 				EntityNames.CONTACT + ESSQueries.COMMA + EntityNames.ROLE + ESSQueries.COMMA + 
 				EntityNames.POSTCODE + ESSQueries.COMMA + EntityNames.IMAGEID + ESSQueries.COMMA + 
+				EntityNames.PASSWORD + ESSQueries.COMMA + EntityNames.SALT + ESSQueries.COMMA + 				
 				EntityNames.CREATEDATE + ESSQueries.COMMA +  EntityNames.CREATEDBY + ESSQueries.COMMA + 
 				EntityNames.LASTMODIFIED + ESSQueries.COMMA + EntityNames.MODIFIEDBY + ESSQueries.COMMA + 
 				EntityNames.REMARKS +
 				ESSQueries.CLOSE_BRACKET + 
 				ESSQueries.VALUES + 
 				ESSQueries.OPEN_BRACKET + 
+				ESSQueries.QUESTION_MARK + ESSQueries.COMMA + ESSQueries.QUESTION_MARK + ESSQueries.COMMA +				
 				ESSQueries.QUESTION_MARK + ESSQueries.COMMA + ESSQueries.QUESTION_MARK + ESSQueries.COMMA +
 				ESSQueries.QUESTION_MARK + ESSQueries.COMMA + ESSQueries.QUESTION_MARK + ESSQueries.COMMA +
 				ESSQueries.QUESTION_MARK + ESSQueries.COMMA + ESSQueries.QUESTION_MARK + ESSQueries.COMMA +
@@ -57,10 +59,12 @@ public class UserDAO implements EntityDAO<Users>{
 				EntityNames.LASTNAME + ESSQueries.EQUAL_TO + ESSQueries.QUESTION_MARK + ESSQueries.COMMA + 
 				EntityNames.CITY + ESSQueries.EQUAL_TO + ESSQueries.QUESTION_MARK + ESSQueries.COMMA + 
 				EntityNames.EMAIL + ESSQueries.EQUAL_TO + ESSQueries.QUESTION_MARK + ESSQueries.COMMA +
+				EntityNames.CONTACT + ESSQueries.EQUAL_TO + ESSQueries.QUESTION_MARK + ESSQueries.COMMA +				
+				EntityNames.ROLE + ESSQueries.EQUAL_TO + ESSQueries.QUESTION_MARK + ESSQueries.COMMA + 				
 				EntityNames.POSTCODE + ESSQueries.EQUAL_TO + ESSQueries.QUESTION_MARK + ESSQueries.COMMA + 
-				EntityNames.CONTACT + ESSQueries.EQUAL_TO + ESSQueries.QUESTION_MARK + ESSQueries.COMMA + 
-				EntityNames.ROLE + ESSQueries.EQUAL_TO + ESSQueries.QUESTION_MARK + ESSQueries.COMMA + 
-				EntityNames.IMAGEID + ESSQueries.EQUAL_TO + ESSQueries.QUESTION_MARK + ESSQueries.COMMA +				
+				EntityNames.IMAGEID + ESSQueries.EQUAL_TO + ESSQueries.QUESTION_MARK + ESSQueries.COMMA +	
+				EntityNames.PASSWORD + ESSQueries.EQUAL_TO + ESSQueries.QUESTION_MARK + ESSQueries.COMMA + 
+				EntityNames.SALT + ESSQueries.EQUAL_TO + ESSQueries.QUESTION_MARK + ESSQueries.COMMA +				
 				EntityNames.CREATEDATE + ESSQueries.EQUAL_TO + ESSQueries.QUESTION_MARK + ESSQueries.COMMA + 
 				EntityNames.CREATEDBY + ESSQueries.EQUAL_TO + ESSQueries.QUESTION_MARK + ESSQueries.COMMA +
 				EntityNames.LASTMODIFIED + ESSQueries.EQUAL_TO + ESSQueries.QUESTION_MARK + ESSQueries.COMMA + 
@@ -88,7 +92,26 @@ public class UserDAO implements EntityDAO<Users>{
 		String query = ESSQueries.SELECT_ALL_FROM + clz.getSimpleName() + ESSQueries.WHERE + 
 				EntityNames.ID + ESSQueries.EQUAL_TO + ESSQueries.QUESTION_MARK;
 		LOGGER.info("User findOne: query:" + query + " queryParams:" + queryParams);
-		return executeQuery(query, queryParams).get(0);
+		List<Users> usrs = executeQuery(query, queryParams);
+		if(usrs.size() == 0){
+			return null;
+		}else{
+			return usrs.get(0);
+		}
+	}
+
+	public Users findByEmail(Class<Users> clz, String email) {
+		Map<String, String> queryParams = new HashMap<String, String>();
+		queryParams.put(new String("1"), email);
+		String query = ESSQueries.SELECT_ALL_FROM + clz.getSimpleName() + ESSQueries.WHERE + 
+				EntityNames.EMAIL + ESSQueries.EQUAL_TO + ESSQueries.QUESTION_MARK;
+		LOGGER.info("User findByEmail: query:" + query + " queryParams:" + queryParams);
+		List<Users> usrs = executeQuery(query, queryParams);
+		if(usrs.size() == 0){
+			return null;
+		}else{
+			return usrs.get(0);
+		}
 	}
 
 	@Override
@@ -123,6 +146,8 @@ public class UserDAO implements EntityDAO<Users>{
 				user.setFirstName(rs.getString(EntityNames.FIRSTNAME));
 				user.setLastName(rs.getString(EntityNames.LASTNAME));
 				user.setPostCode(rs.getString(EntityNames.POSTCODE));
+				user.setSalt(rs.getString(EntityNames.SALT));
+				user.setPassword(rs.getString(EntityNames.PASSWORD));				
 				user.setCity(rs.getString(EntityNames.CITY));
 				user.setContact(rs.getString(EntityNames.CONTACT));
 				user.setRole(rs.getString(EntityNames.ROLE));
@@ -206,11 +231,13 @@ public class UserDAO implements EntityDAO<Users>{
 		queryParams.put(new String("6"), user.getRole());
 		queryParams.put(new String("7"), user.getPostCode());
 		queryParams.put(new String("8"), new Integer(user.getImageid()).toString());
-		queryParams.put(new String("9"), user.getCreateDate().toString());
-		queryParams.put(new String("10"), new Integer(user.getCreatedBy()).toString());
-		queryParams.put(new String("11"), user.getLastModified().toString());
-		queryParams.put(new String("12"), new Integer(user.getModifiedBy()).toString());
-		queryParams.put(new String("13"), user.getRemarks());		
+		queryParams.put(new String("9"), user.getPassword());
+		queryParams.put(new String("10"), user.getSalt());		
+		queryParams.put(new String("11"), user.getCreateDate().toString());
+		queryParams.put(new String("12"), new Integer(user.getCreatedBy()).toString());
+		queryParams.put(new String("13"), user.getLastModified().toString());
+		queryParams.put(new String("14"), new Integer(user.getModifiedBy()).toString());
+		queryParams.put(new String("15"), user.getRemarks());		
 		return queryParams;
 	}
 }

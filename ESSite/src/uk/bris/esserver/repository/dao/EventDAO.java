@@ -16,6 +16,7 @@ import uk.bris.esserver.repository.connection.DBConnection;
 import uk.bris.esserver.repository.constants.ESSQueries;
 import uk.bris.esserver.repository.constants.EntityNames;
 import uk.bris.esserver.repository.entities.Event;
+import uk.bris.esserver.util.ESSDateUtil;
 
 public class EventDAO implements EntityDAO<Event>{
 
@@ -90,7 +91,12 @@ public class EventDAO implements EntityDAO<Event>{
 		String query = ESSQueries.SELECT_ALL_FROM + clz.getSimpleName() + ESSQueries.WHERE + 
 				EntityNames.ID + ESSQueries.EQUAL_TO + ESSQueries.QUESTION_MARK + ESSQueries.ORDERBY + EntityNames.STARTDATE;
 		LOGGER.info("Event findOne: query:" + query + " queryParams:" + queryParams);
-		return executeQuery(query, queryParams).get(0);
+		List<Event> evts = executeQuery(query, queryParams);
+		if(evts != null && evts.size() > 0){
+			return evts.get(0);
+		}else{
+			return null;
+		}
 	}
 
 	public List<Event> findByUserId(Class<Event> clz, String userid) {
@@ -99,6 +105,15 @@ public class EventDAO implements EntityDAO<Event>{
 		String query = ESSQueries.SELECT_ALL_FROM + clz.getSimpleName() + ESSQueries.WHERE + 
 				EntityNames.USERID + ESSQueries.EQUAL_TO + ESSQueries.QUESTION_MARK + ESSQueries.ORDERBY + EntityNames.STARTDATE;
 		LOGGER.info("Event findByUserId: query:" + query + " queryParams:" + queryParams);
+		return executeQuery(query, queryParams);
+	}
+	
+	public List<Event> findByDate(Class<Event> clz, String from, String to, String citycode) {
+		Map<String, String> queryParams = new HashMap<String, String>();
+		queryParams.put(new String("1"), citycode); 
+		String query = ESSQueries.SELECT_ALL_FROM + clz.getSimpleName() + ESSQueries.WHERE + 
+				EntityNames.CITY + ESSQueries.EQUAL_TO + ESSQueries.QUESTION_MARK + ESSQueries.ORDERBY + EntityNames.STARTDATE;
+		LOGGER.info("Event findByDate: query:" + query + " queryParams:" + queryParams);
 		return executeQuery(query, queryParams);
 	}
 

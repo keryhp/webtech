@@ -1,6 +1,11 @@
 package uk.bris.esserver.repository.entities;
 
 import java.sql.Timestamp;
+import java.util.HashMap;
+import java.util.Map;
+
+import uk.bris.esserver.repository.constants.EntityNames;
+import uk.bris.esserver.util.ESSDateUtil;
 
 public class City {
 
@@ -74,5 +79,19 @@ public class City {
 	}
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
+	}
+	public Map<String, Object> getCityAsMap(){
+		Map<String, Object> cityData = new HashMap<String, Object>();
+		cityData.put(EntityNames.ID, new Integer(this.id).toString());
+		cityData.put(EntityNames.CITYCODE, this.cityCode);
+		cityData.put(EntityNames.CITYNAME, this.cityName);
+		cityData.put(EntityNames.POSTCODE, this.postCode);
+		cityData.put(EntityNames.COUNTRY, this.country);
+		cityData.put(EntityNames.CREATEDATE, ESSDateUtil.formatTimeStamp(this.createDate));
+		cityData.put(EntityNames.CREATEDBY, new Integer(this.createdBy).toString());
+		cityData.put(EntityNames.CREATEDATE, ESSDateUtil.formatTimeStamp(this.lastModified));
+		cityData.put(EntityNames.CREATEDBY, new Integer(this.modifiedBy).toString());		
+		cityData.put(EntityNames.REMARKS, this.remarks);
+		return cityData;
 	}
 }

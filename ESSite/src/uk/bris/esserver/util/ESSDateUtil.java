@@ -28,7 +28,7 @@ public class ESSDateUtil {
 	}
 	
 	public static String formatDate(Timestamp ts){
-		return parser.format(ts.getDate());
+		return parser.format(ts);
 	}
 	
 	public static Date parseDateString(String date){
@@ -39,5 +39,9 @@ public class ESSDateUtil {
 			e.printStackTrace();
 		}
 		return  null;
+	}
+	
+	public static String getUseableDate(Date date){
+		return parser.format(date);
 	}
 }

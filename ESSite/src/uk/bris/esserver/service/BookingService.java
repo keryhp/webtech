@@ -28,7 +28,7 @@ public class BookingService {
 		return bookings;
 	}
 
-	public int addBooking(Booking comment){
-		return bdao.save(Booking.class, comment);
+	public int addBooking(Booking booking){
+		return bdao.save(Booking.class, booking);
 	}
 }

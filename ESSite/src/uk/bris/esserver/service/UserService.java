@@ -18,6 +18,11 @@ public class UserService {
 		return user;
 	}
 
+	public Users getUserByEmail(String email){
+		Users user = udao.findByEmail(Users.class, email);
+		return user;
+	}
+
 	public int addUser(Users user){
 		return udao.save(Users.class, user);
 	}

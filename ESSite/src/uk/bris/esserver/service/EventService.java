@@ -29,6 +29,11 @@ public class EventService {
 		return events;
 	}
 
+	public List<Event> getEventsByDate(String from, String to, String citycode){
+		List<Event> events = edao.findByDate(Event.class, from, to, citycode);
+		return events;
+	}
+
 	public int addEvent(Event event){
 		return edao.save(Event.class, event);
 	}
